@@ -1,7 +1,7 @@
-# ÌæØ Plinko Lab ‚Äî Provably Fair Game
+# Plinko Lab ‚Äî Provably Fair Game
 **Daphnis Labs ‚Äî Full-Stack Developer Intern Take-Home**
 Interactive **Plinko** with **commit‚Äìreveal RNG**, **deterministic replay**, and a public **verifier**. Built with **Next.js**, **Node.js**, **TypeScript**, and **Prisma**.
-Ìºê **Live App:** [https://plinko-bice.vercel.app](https://plinko-bice.vercel.app)
+ **Live App:** [https://plinko-bice.vercel.app](https://plinko-bice.vercel.app)
 ---
 ## Overview
 - **Provably-fair** commit‚Äìreveal protocol (serverSeed + clientSeed + nonce)
@@ -17,7 +17,7 @@ Interactive **Plinko** with **commit‚Äìreveal RNG**, **deterministic replay**, a
 **PRNG:** `xorshift32` seeded from `combinedSeed`  
 **Deployment:** Vercel  
 ---
-## Ì¥ê Fairness Protocol
+##  Fairness Protocol
 \`\`\`
 commitHex   = SHA256(serverSeed + ":" + nonce)
 combinedSeed= SHA256(serverSeed + ":" + clientSeed + ":" + nonce)
@@ -28,7 +28,7 @@ All randomness derives from a deterministic PRNG seeded by `combinedSeed`. Verif
 `adj = (dropColumn - floor(R/2)) * 0.01`  
 `bias' = clamp(leftBias + adj, 0, 1)`
 ---
-## Ì∑Æ Deterministic Engine
+## Deterministic Engine
 - **Rows:** 12‚ÄÉ**Bins:** 13  
 - Each row ‚Üí Left/Right based on PRNG vs bias‚Ä≤  
 - `pos` = number of Right moves ‚Üí **final binIndex = pos**  
@@ -44,7 +44,7 @@ combinedSeed = e1dddf77de27d395ea2be2ed49aa2a59bd6bf12ee8d350c16c008abd406c07e0
 binIndex     = 6 ‚úÖ
 \`\`\`
 ---
-## Ì∑æ API Endpoints
+##  API Endpoints
 | Method | Endpoint | Description |
 |---|---|---|
 | POST | `/api/rounds/commit` | Create round ‚Üí `{ roundId, commitHex, nonce }` |
@@ -53,7 +53,7 @@ binIndex     = 6 ‚úÖ
 | GET | `/api/rounds/:id` | Full round details for UI & verifier |
 | GET | `/api/verify` | Deterministic recompute for public verifier |
 ---
-## Ì∑∞ Local Setup
+##  Local Setup
 \`\`\`bash
 git clone https://github.com/Shreytan/Plinko.git
 cd Plinko
@@ -79,12 +79,12 @@ npm run test     # run RNG/unit tests
 Route: **`/verify`**  
 Enter `serverSeed`, `clientSeed`, `nonce`, `dropColumn` to reproduce results. Displays ‚úÖ if recomputed `commitHex`, `combinedSeed`, and `binIndex` match the stored round.
 ---
-## Ìæ® Accessibility & Performance
+## ÔøΩÔøΩÔøΩ Accessibility & Performance
 - Keyboard support: ‚Üê/‚Üí to move, **Space** to drop  
 - Mute toggle + reduced motion support  
 - Targets **60fps**, optimized DOM & layout updates  
 ---
-## Ì¥ñ AI Usage
+## AI Usage
 Used **ChatGPT (GPT-5)** for:
 - Fairness protocol documentation  
 - API design + Prisma schema outline  
@@ -92,4 +92,4 @@ Used **ChatGPT (GPT-5)** for:
 All hashing, PRNG, API routes, and animation logic were written and verified manually.
 ---
 **Author:** Shreyansh Shukla ‚Ä¢ ¬© 2025  
-Ìºê Live App: [https://plinko-bice.vercel.app](https://plinko-bice.vercel.app)
+Live App: [https://plinko-bice.vercel.app](https://plinko-bice.vercel.app)
